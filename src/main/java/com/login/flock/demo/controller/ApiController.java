@@ -1,13 +1,21 @@
-package com.login.flock.demo;
+package com.login.flock.demo.controller;
 
 import java.util.Arrays;
 import java.util.List;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.login.flock.demo.model.Centroide;
+import com.login.flock.demo.model.DataJs;
+import com.login.flock.demo.model.Provincia;
 
 @RestController 
 public class ApiController {
@@ -20,8 +28,6 @@ public class ApiController {
 	public List<Object> getProvincias(){
 		//Object[] provincias = restTemplate.getForObject(url, Object[].class);
 		Provincia provincias = restTemplate.getForObject(url, Provincia.class);
-		
-		provincias.toString();
 		return Arrays.asList(provincias);
 		
 	}
@@ -29,7 +35,7 @@ public class ApiController {
 	@GetMapping("/provincia")
 	public Object getProvins(){
 		//Object[] provincias = restTemplate.getForObject(url, Object[].class);
-		return restTemplate.getForObject(url, String.class);
+		return restTemplate.getForObject(url, Object.class);
 		}
 	
 	@GetMapping("/provinciascentroide/{provinceName}")
@@ -44,4 +50,14 @@ public class ApiController {
 		return centroide;
 	
 		}
+	
+	@Controller
+	@RequestMapping
+	public class LoginController {
+	    @RequestMapping(value = "/", method = RequestMethod.GET)
+	    @ResponseBody
+	    public String welcomePage(Authentication authentication) {
+	    	return "Bienvenido, tienes permisos de n/" + authentication.getName() +"y su clave es"+authentication.getPrincipal();
+	    }
+	}
 }

@@ -1,4 +1,4 @@
-package com.login.flock.demo;
+package com.login.flock.demo.model;
 
 import java.util.HashMap;
 import java.util.Map;

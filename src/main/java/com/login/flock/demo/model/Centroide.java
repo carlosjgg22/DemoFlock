@@ -1,4 +1,4 @@
-package com.login.flock.demo;
+package com.login.flock.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -23,6 +23,17 @@ private Double lat;
 private Double lon;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+public Centroide() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public Centroide(Double lat, Double lon) {
+	super();
+	this.lat = lat;
+	this.lon = lon;
+}
 
 @JsonProperty("lat")
 public Double getLat() {

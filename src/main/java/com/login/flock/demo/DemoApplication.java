@@ -1,20 +1,17 @@
 package com.login.flock.demo;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.boot.CommandLineRunner;
+import org.apache.catalina.security.SecurityConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@Configuration  
+@Import({ SecurityConfig.class })
 @SpringBootApplication
 public class DemoApplication {
 
@@ -28,7 +25,7 @@ public class DemoApplication {
 	}
 	
 	@GetMapping("/hello")	
-	public String hello(@RequestParam(value ="name", defaultValue= "World its mine bitch") String name) {
+	public String hello(@RequestParam(value ="name", defaultValue= "World its mine") String name) {
 			return String.format("Hello %s!", name);
 	}
 	

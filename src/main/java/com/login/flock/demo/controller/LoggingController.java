@@ -1,4 +1,4 @@
-package com.login.flock.demo;
+package com.login.flock.demo.controller;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
