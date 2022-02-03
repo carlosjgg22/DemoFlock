@@ -76,4 +76,9 @@ public class Provincia {
 		this.additionalProperties.put(name, value);
 	}
 
+	@Override
+	public String toString() {
+		return "Provincia [centroide=" + centroide + ", id=" + id + ", nombre=" + nombre + "]";
+	}
+
 }

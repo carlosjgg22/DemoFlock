@@ -92,4 +92,11 @@ public class DataJs {
 	this.additionalProperties.put(name, value);
 	}
 
+	@Override
+	public String toString() {
+		return "DataJs [cantidad=" + cantidad + ", inicio=" + inicio + ", parametros=" + parametros + ", provincias="
+				+ provincias + ", total=" + total + ", additionalProperties=" + additionalProperties + "]";
+	}
+
+	
 	}

@@ -1,12 +1,13 @@
 package com.login.flock.demo.controller;
 
+import javax.persistence.Entity;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import ch.qos.logback.classic.Logger;
 
-@RestController
+@Entity
 public class LoggingController {
 Logger logger = (Logger) LoggerFactory.getLogger(LoggingController.class);
 
