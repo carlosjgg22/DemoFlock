@@ -32,6 +32,7 @@ public class ApiController {
 		// Object[] provincias = restTemplate.getForObject(url, Object[].class);
 		logger.info("Accediendo a listas de provicias:" + url);
 		DataJs result = restTemplate.getForObject(url, DataJs.class);
+		System.out.print(result.toString());
 		return result;
 
 	}
@@ -40,9 +41,9 @@ public class ApiController {
 	public Centroide getCentroideByNameProvince(@PathVariable String provinceName) {
 		Centroide centroide = null;
 		logger.info("Consultando provincia: " + provinceName);
-		DataJs datos = restTemplate.getForObject(url, DataJs.class);
+		DataJs data = restTemplate.getForObject(url, DataJs.class);
 
-		for (Provincia provincia2 : datos.getProvincias()) {
+		for (Provincia provincia2 : data.getProvincias()) {
 			if (provincia2.getNombre().toLowerCase().trim().equals(provinceName.toLowerCase().trim())) {
 				centroide = provincia2.getCentroide();
 				break;

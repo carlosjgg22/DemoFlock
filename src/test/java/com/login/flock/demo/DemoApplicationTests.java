@@ -1,13 +1,14 @@
 package com.login.flock.demo;
-import static org.mockito.Mockito.mock;
 
 import java.net.URISyntaxException;
 
+import org.apache.catalina.security.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 import com.login.flock.demo.controller.ApiController;
 import com.login.flock.demo.model.Centroide;
@@ -26,9 +27,15 @@ class DemoApplicationTests {
 	@InjectMocks
 	Centroide centroide;
 	
+	@InjectMocks 
+	AuthenticationManagerBuilder auth;
+	
 	@Mock 
 	ApiController controllerApi; 
 	
+	@Mock 
+	SecurityConfig securityConfig;
+
 	@Mock 
 	DemoApplication applicationRestTemplate;
 	private static String url = "https://apis.datos.gob.ar/georef/api/provincias";
@@ -38,7 +45,7 @@ class DemoApplicationTests {
 	}
 
 	/**
-	 * Este método testea el método getListProvin de la clase ApiController
+	 * Este método testea el método getCentroideByName de la clase ApiController
 	 * se compara el resultado del controller pasandole como parámetro 
 	 * el nombre de una provicia contra el de un objeto creado
 	 * */
@@ -51,29 +58,24 @@ class DemoApplicationTests {
 		Assert.assertEquals(provinciaTest.getCentroide(),response);
 	}
 	
+	
+	/**
+	 * Este método testea el método getProvinces de la clase ApiController
+	 * se compara el resultado del controller que es un Objeto DataJs con 
+	 * con Objeto DataJs mockeado en la clase ControllerApi
+	 * */
 	@Test
 	public void getPronvinces() throws URISyntaxException {
 		DemoApplication restTemplate = new DemoApplication();
-		//DataJs data = new DataJs();
-		//Mockito.when(controllerApi.getProvinces()).thenReturn(data);
-		//DataJs objectResult= controllerApi.getProvinces();
-		//DataJs objectResult1 =  restTemplate.getRestTemplate().getForObject(url, DataJs.class);
-	    //System.out.print(objectResult1.toString());
-	    //System.out.print(objectResult);
-		//Assert.assertSame(objectResult1, objectResult);
-		 //Assert.assertEquals(objectResult.getClass(), Object.class);
-		
-		//Provincia provinciaTest = new Provincia(new Centroide (-26.8753965086829,-54.6516966230371),"54","Misiones");
-		//Mockito.when(controllerApi.getListProvin(provinciaTest.getNombre())).thenReturn(provinciaTest.getCentroide());
-	//Centroide response = controllerApi.getListProvin(provinciaTest.getNombre());
-		//Assert.assertEquals(response,HttpStatus.OK);
-		
-		DataJs templateMock = mock(DataJs.class);
-		Mockito.when(controllerApi.getProvinces()).thenReturn(templateMock);
-		DataJs objectResult= controllerApi.getProvinces();
 		DataJs objectResult1 =  restTemplate.getRestTemplate().getForObject(url, DataJs.class);
-		System.out.print(objectResult.toString());
-		System.out.print(objectResult1);
+		Mockito.when(controllerApi.getProvinces()).thenReturn(objectResult1);
+		DataJs objectResult= controllerApi.getProvinces();	
 		Assert.assertSame(objectResult1, objectResult);
+	}
+	
+	@Test 
+	public void configureRols() {
+		
+		
 	}
 }
