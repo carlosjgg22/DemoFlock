@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+@SpringBootApplication
+@OpenAPIDefinition
 @Configuration  
 @Import({ SecurityConfig.class })
-@SpringBootApplication
 public class DemoApplication {
 
 	@Bean 

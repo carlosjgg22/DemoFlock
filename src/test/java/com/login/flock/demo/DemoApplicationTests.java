@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-
 import com.login.flock.demo.controller.ApiController;
 import com.login.flock.demo.model.Centroide;
 import com.login.flock.demo.model.DataJs;
