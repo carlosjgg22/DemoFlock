@@ -13,7 +13,6 @@ import com.login.flock.demo.controller.ApiController;
 import com.login.flock.demo.model.Centroide;
 import com.login.flock.demo.model.DataJs;
 import com.login.flock.demo.model.Provincia;
-
 import junit.framework.Assert;
 
 /**
@@ -72,9 +71,5 @@ class DemoApplicationTests {
 		Assert.assertSame(objectResult1, objectResult);
 	}
 	
-	@Test 
-	public void configureRols() {
-		
-		
-	}
+	
 }

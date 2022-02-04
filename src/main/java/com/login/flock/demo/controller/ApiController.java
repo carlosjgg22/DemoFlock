@@ -19,7 +19,6 @@ import com.login.flock.demo.model.DataJs;
 import com.login.flock.demo.model.Provincia;
 
 import ch.qos.logback.classic.Logger;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -35,7 +34,7 @@ public class ApiController {
 
 	private static String url = "https://apis.datos.gob.ar/georef/api/provincias";
 
-	@Operation(summary="Consulta todas las pronvincias que ofrece la API pública")
+	@Operation(summary = "Consulta todas las pronvincias que ofrece la API pública")
 	@ApiResponse(responseCode = "200", description = "Lista de todas las  provincias")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/provincia")
@@ -45,13 +44,14 @@ public class ApiController {
 		logger.info("Accediendo a listas de provicias:" + url);
 		DataJs result = restTemplate.getForObject(url, DataJs.class);
 		return result;
-		
 
 	}
-	@Operation(summary="Consulta el Centroide de una  provincia dando el nombre")
+
+	@Operation(summary = "Consulta el Centroide de una  provincia dando el nombre")
 	@GetMapping("/provincias/centroide/{provinceName}")
 	@ApiResponse(responseCode = "200", description = "Centroide Encontrado para la provincia")
-	public Centroide getCentroideByNameProvince(@Parameter(description = "Nombre de la provincia ", required = true)@PathVariable String provinceName) {
+	public Centroide getCentroideByNameProvince(
+			@Parameter(description = "Nombre de la provincia ", required = true) @PathVariable String provinceName) {
 		Centroide centroide = null;
 		logger.info("Consultando provincia: " + provinceName);
 		DataJs data = restTemplate.getForObject(url, DataJs.class);
@@ -67,15 +67,15 @@ public class ApiController {
 
 	}
 
-		@RequestMapping(value = "/", method = RequestMethod.GET)
-		@ResponseBody
-		@Operation(summary="Cuando un usuario inicia sesión le muestra el rol con el cual inició")
-		@ApiResponse(responseCode = "200", description = "Mensaje con el Rol de usuario")
-		public String welcomePage(Authentication authentication) {
-			logger.info("Validando Credenciales: " + authentication.getPrincipal());
-			logger.info("Inicio de sesión válido: " + authentication.getName());
-			return "Bienvenido, tienes permisos de " + authentication.getName();
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@ResponseBody
+	@Operation(summary = "Cuando un usuario inicia sesión le muestra el rol con el cual inició")
+	@ApiResponse(responseCode = "200", description = "Mensaje con el Rol de usuario")
+	public String welcomePage(Authentication authentication) {
+		logger.info("Validando Credenciales: " + authentication.getPrincipal());
+		logger.info("Inicio de sesión válido: " + authentication.getName());
+		return "Bienvenido, tienes permisos de " + authentication.getName();
 
-		}
-	
+	}
+
 }

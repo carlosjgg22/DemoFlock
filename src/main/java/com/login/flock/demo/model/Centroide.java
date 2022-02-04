@@ -9,12 +9,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.v3.oas.annotations.Parameter;
 
-@ApiModel(value="Centroide", description="Contiene la latitud y la longitud del Centroide de una provincia" )
+
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 "lat",
