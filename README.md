@@ -9,6 +9,7 @@ JavaSE 1.8
 Junit 3.8.1
 
 #Descripción del Proyecto 
+
 esta aplicación contiene dos endpoints que consumen una API de acceso público, a los cuales se puede acceder mediante una URL, contiene un nivel de seguridad básico donde le solicita al usuario credenciales para acceder
 a dichos endpoints. Además se documentó toda la API para comprender su funcionamiento de mejor modo. Todo el 
 tráfico realizao en la demo se documenta en log. 
