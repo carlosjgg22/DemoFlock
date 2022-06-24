@@ -27,11 +27,8 @@ public class ApiController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-
 	Logger logger = (Logger) LoggerFactory.getLogger(ApiController.class);
-
 	private static String url = "https://apis.datos.gob.ar/georef/api/provincias";
-
 	@Operation(summary = "Consulta todas las pronvincias que ofrece la API pública")
 	@ApiResponse(responseCode = "200", description = "Lista de todas las  provincias")
 	@ResponseStatus(HttpStatus.OK)
