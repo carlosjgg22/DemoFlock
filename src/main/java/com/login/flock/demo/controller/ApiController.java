@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import com.login.flock.demo.model.Centroide;
 import com.login.flock.demo.model.DataJs;
 import com.login.flock.demo.model.Provincia;
-
 import ch.qos.logback.classic.Logger;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,7 +38,6 @@ public class ApiController {
 	@GetMapping("/provincia")
 	public DataJs getProvinces() {
 		logger.info("Consultando Lista de todas las provincias");
-		// Object[] provincias = restTemplate.getForObject(url, Object[].class);
 		logger.info("Accediendo a listas de provicias:" + url);
 		DataJs result = restTemplate.getForObject(url, DataJs.class);
 		return result;
@@ -64,7 +61,6 @@ public class ApiController {
 		}
 		logger.info("Respuesta consulta provincia: " + provinceName + " " + centroide.toString());
 		return centroide;
-
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -75,7 +71,5 @@ public class ApiController {
 		logger.info("Validando Credenciales: " + authentication.getPrincipal());
 		logger.info("Inicio de sesión válido: " + authentication.getName());
 		return "Bienvenido, tienes permisos de " + authentication.getName();
-
 	}
-
 }
